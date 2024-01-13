@@ -35,10 +35,10 @@ class StartFrame:
         label_title_start = tk.Label(self.master, text="Welcome to the Pokemon Pokedex!", font=("Arial", 18, "bold"), bg="#FFE5E5") 
         label_title_start.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
-        button_get_started = tk.Button(self.master, text="Get Started", command=on_get_started, font=("Arial", 16), bg="#FFE5E5", fg="BLACK", activebackground="#65e7ff", activeforeground="BLACK", highlightthickness=2, highlightbackground="#05d7ff", highlightcolor="WHITE", cursor='hand1')
+        button_get_started = tk.Button(self.master, text="Get Started", command=on_get_started, font=("Arial", 16), bg="#FFE5E5", fg="BLACK", activebackground="#E0AED0", activeforeground="BLACK", highlightthickness=2, highlightbackground="#05d7ff", highlightcolor="WHITE", cursor='hand1')
         button_get_started.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
 
-        button_instructions = tk.Button(self.master, text="Instructions", command=on_instructions, font=("Arial", 16), bg="#FFE5E5", fg="BLACK", activebackground="#65e7ff", activeforeground="BLACK", highlightthickness=2, highlightbackground="#05d7ff", highlightcolor="WHITE", cursor='hand1')
+        button_instructions = tk.Button(self.master, text="Instructions", command=on_instructions, font=("Arial", 16), bg="#FFE5E5", fg="BLACK", activebackground="#E0AED0", activeforeground="BLACK", highlightthickness=2, highlightbackground="#05d7ff", highlightcolor="WHITE", cursor='hand1')
         button_instructions.place(relx=0.5, rely=0.7, anchor=tk.CENTER)
 
 
@@ -97,16 +97,16 @@ class PokemonApp:
         self.label_weight = tk.Label(self.master, text="Weight:", font=("Arial", 14), bg="#FFE5E5")
         self.label_weight.pack(pady=5, anchor=tk.CENTER)
 
-        self.button_get_info = tk.Button(self.master, text="Get Pokemon Info", command=self.get_pokemon_info, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1')
+        self.button_get_info = tk.Button(self.master, text="Get Pokemon Info", command=self.get_pokemon_info, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1', activebackground="#E0AED0")
         self.button_get_info.pack(pady=10, anchor=tk.CENTER)
 
-        self.button_display_image = tk.Button(self.master, text="Display Image", command=self.display_image, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1')
+        self.button_display_image = tk.Button(self.master, text="Display Image", command=self.display_image, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1', activebackground="#E0AED0")
         self.button_display_image.pack(pady=10, anchor=tk.CENTER)
 
-        self.button_reset = tk.Button(self.master, text="Reset", command=self.reset, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1')
+        self.button_reset = tk.Button(self.master, text="Reset", command=self.reset, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1', activebackground="#E0AED0")
         self.button_reset.pack(pady=10, anchor=tk.CENTER)
 
-        self.button_exit = tk.Button(self.master, text="Exit", command=self.master.destroy, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1')
+        self.button_exit = tk.Button(self.master, text="Exit", command=self.master.destroy, font=("Helvetica", 12), bg="#FFE5E5", cursor='hand1', activebackground="#E0AED0")
         self.button_exit.pack(pady=10, anchor=tk.CENTER)
 
         # Load the back button image
@@ -115,8 +115,7 @@ class PokemonApp:
         self.back_button_photo = ImageTk.PhotoImage(back_button_image)
 
         # Back button to return to the start frame
-        self.button_back = tk.Button(self.master, image=self.back_button_photo, command=back_to_start_frame,
-                                     highlightthickness=0, bd=0, bg="#FFE5E5", cursor='hand1')
+        self.button_back = tk.Button(self.master, image=self.back_button_photo, command=back_to_start_frame, highlightthickness=0, bd=0, bg="#FFE5E5", cursor='hand1', activebackground="#E0AED0")
         self.button_back.place(relx=0.05, rely=0.05, anchor=tk.CENTER)
 
         self.widgets_packed = False  # Set the flag to False initially
