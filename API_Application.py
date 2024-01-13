@@ -8,7 +8,7 @@ import io
 class StartFrame:
     def __init__(self, master, on_get_started, on_instructions):
         self.master = master
-        self.master.title("The Pokemon Pokedex - Main Menu")
+        self.master.title("The Pokemon Pokedex - Home Page")
         self.master.geometry("500x200")
         self.master.resizable(False, False)  # Disable resizing of the window
         self.master.configure(bg="#FFFFFF")  # Set background color
