@@ -172,23 +172,22 @@ class PokemonApp:
             # Open the image using PIL
             image = Image.open(io.BytesIO(image_response.content))
 
-            # Resize the image to fit the window
-            resized_image = self.resize_image(image, (400, 400))
-            resized_image_tk = ImageTk.PhotoImage(resized_image)
-
-            # Create a label for displaying the resized image
-            self.larger_image_label = tk.Label(new_window, image=resized_image_tk)
-            self.larger_image_label.image = resized_image_tk
+            # Create a label for displaying the image
+            self.larger_image_label = tk.Label(new_window)
             self.larger_image_label.pack(pady=20, anchor=tk.CENTER)
 
-    def resize_image(self, image, size):
-        # Resize the image while maintaining its aspect ratio
-        aspect_ratio = image.width / image.height
-        new_width = int(size[0])
-        new_height = int(size[0] / aspect_ratio)
+            # Bind the configure event to the resize_image function
+            new_window.bind("<Configure>", lambda event, image=image: self.resize_image(image, event.width, event.height))
 
-        # Resize the image and return
-        return image.resize((new_width, new_height), Image.BICUBIC)
+            # Display the initial resized image
+            self.resize_image(image, 400, 400)
+
+    def resize_image(self, image, new_width, new_height):
+        # Resize the image and update the label
+        resized_image = image.resize((new_width, new_height), Image.BICUBIC)
+        resized_image_tk = ImageTk.PhotoImage(resized_image)
+        self.larger_image_label.config(image=resized_image_tk)
+        self.larger_image_label.image = resized_image_tk
 
     def reset(self):
         # Reset details of the Pokemon
