@@ -6,7 +6,7 @@ import io
 
 
 class StartFrame:
-    def __init__(self, master, on_get_started, on_instructions):
+    def __init__(self, master, main_app_frame, on_instructions):
         self.master = master
         self.master.title("The Pokemon Pokedex - Home Page")
         self.master.geometry("500x200")
@@ -35,7 +35,7 @@ class StartFrame:
         label_title_start = tk.Label(self.master, text="Welcome to the Pokemon Pokedex!", font=("Arial", 18, "bold"), bg="#FFE5E5") 
         label_title_start.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
-        button_get_started = tk.Button(self.master, text="Get Started", command=on_get_started, font=("Arial", 16), bg="#FFE5E5", fg="BLACK", activebackground="#E0AED0", activeforeground="BLACK", highlightthickness=2, highlightbackground="#05d7ff", highlightcolor="WHITE", cursor='hand1')
+        button_get_started = tk.Button(self.master, text="Get Started", command=main_app_frame, font=("Arial", 16), bg="#FFE5E5", fg="BLACK", activebackground="#E0AED0", activeforeground="BLACK", highlightthickness=2, highlightbackground="#05d7ff", highlightcolor="WHITE", cursor='hand1')
         button_get_started.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
 
         button_instructions = tk.Button(self.master, text="Instructions", command=on_instructions, font=("Arial", 16), bg="#FFE5E5", fg="BLACK", activebackground="#E0AED0", activeforeground="BLACK", highlightthickness=2, highlightbackground="#05d7ff", highlightcolor="WHITE", cursor='hand1')
@@ -134,9 +134,7 @@ class PokemonApp:
 
             self.label_name["text"] = f"Name: {self.pokemon_data['name'].capitalize()}"
             self.label_id["text"] = f"ID: {self.pokemon_data['id']}"  # Display Pokemon ID
-
-            # Update labels for additional information
-            abilities = [ability['ability']['name'] for ability in self.pokemon_data['abilities']]
+            abilities = [ability['ability']['name'].capitalize() for ability in self.pokemon_data['abilities']]
             abilities_text = f"Abilities: {', '.join(abilities)}"
             self.label_ability["text"] = abilities_text
 
@@ -154,6 +152,8 @@ class PokemonApp:
             self.label_weight["text"] = weight
 
             self.label_type["text"] = f"Type: {', '.join([t['type']['name'] for t in self.pokemon_data['types']])}"
+            types = [t['type']['name'].capitalize() for t in self.pokemon_data['types']]
+            self.label_type["text"] = f"Type: {', '.join(types)}"
 
         except requests.exceptions.RequestException as e:
             messagebox.showerror("Error", f"Failed to get Pokemon info: {e}")
@@ -217,7 +217,7 @@ class PokemonApp:
                 widget.destroy()
 
 
-def on_get_started():
+def main_app_frame():
     start_frame.master.withdraw()
     main_window = tk.Toplevel(start_frame.master)
     app = PokemonApp(main_window, back_to_start_frame=lambda: back_to_start_frame(main_window))
@@ -235,5 +235,5 @@ def back_to_start_frame(main_window):
     start_frame.master.deiconify()
 
 root = tk.Tk()
-start_frame = StartFrame(root, on_get_started, on_instructions)
+start_frame = StartFrame(root, main_app_frame, on_instructions)
 root.mainloop()
