@@ -24,8 +24,8 @@ class StartFrame:
         self.master.geometry(f"500x200+{x_coordinate}+{y_coordinate}")
 
         # Load the image using PIL
-        image = Image.open("assets/background.jpg")  # Replace with the actual path to your image
-        image = image.resize((500, 200), Image.BICUBIC)  # Adjust the size if needed
+        image = Image.open("assets/background.jpg")  
+        image = image.resize((500, 200), Image.BICUBIC)  
         self.photo = ImageTk.PhotoImage(image)
 
         # Create a label to display the image
@@ -60,8 +60,8 @@ class PokemonApp:
         self.master.geometry(f"500x600+{x_coordinate}+{y_coordinate}")
 
         # Load the image using PIL
-        background_image = Image.open("assets/background.jpg")  # Replace with the actual path to your image
-        background_image = background_image.resize((500, 600), Image.BICUBIC)  # Adjust the size if needed
+        background_image = Image.open("assets/background.jpg")  
+        background_image = background_image.resize((500, 600), Image.BICUBIC)
         self.background_photo = ImageTk.PhotoImage(background_image)
 
         # Create a label to display the background image
@@ -110,8 +110,8 @@ class PokemonApp:
         self.button_exit.pack(pady=10, anchor=tk.CENTER)
 
         # Load the back button image
-        back_button_image = Image.open("assets/return.png")  # Replace with the actual path to your back button image
-        back_button_image = back_button_image.resize((50, 50), Image.BICUBIC)  # Adjust the size if needed
+        back_button_image = Image.open("assets/return.png")  
+        back_button_image = back_button_image.resize((50, 50), Image.BICUBIC)  
         self.back_button_photo = ImageTk.PhotoImage(back_button_image)
 
         # Back button to return to the start frame
